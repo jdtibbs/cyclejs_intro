@@ -1,7 +1,4 @@
-	import * as service from './services/array.service';
+import lesson01 from './lessons/lesson01';
+import lesson02 from './lessons/lesson02';
 
-	let arr = [1, 2, 3];
-
-	console.log('Double each element of the array [' + arr.toString() + ']: ' + service.doubleArray(arr));
-
-	console.log('Sum each element of the array [' + arr.toString() + ']: ' + service.sum(arr));
+// each lesson is an individual component. by importing them here they will be browserify'd into action!
