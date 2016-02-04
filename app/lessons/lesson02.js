@@ -1,22 +1,40 @@
-	import Cycle from '@cycle/core';
-	import CycleDOM from '@cycle/dom';
 	import Rx from 'rx';
 
-	// the entry point for the whole application.
+	// We need to give structure to our application with logic and effects. 
+	// This lessons shows how we can organize our code into two parts: 
+	// main() function for logic, 
+	// and effects functions for effects.
+
+	// logic:
 	function main() {
-		// return an Observable to the DOM driver.
-		return {
-			DOM: Rx.Observable.interval(1000)
-				.map(ii => CycleDOM.p(`${ii} seconds elapsed`))
-		};
+		return Rx.Observable.timer(0, 1000)
+			.map(ii => `Seconds elapsed ${ii}`);
 	}
 
-	// an object of driver functions.
-	const drivers = {
-		DOM: CycleDOM.makeDOMDriver('#lesson02')
-	};
+	//  in general place each effect in a function.
 
-	// start app, passing entry poiunt and drivers.
-	Cycle.run(main, drivers);
+	// effect:
+	function DOMEffect(text$) {
+		//  naming convention: $ indicates this is a 'stream'.
+		text$.subscribe(text => {
+			document.querySelector('#lesson02').textContent = text;
+		});
+	}
+
+	// another effect:
+	function ConsoleLogEffect(text$) {
+		text$.subscribe(text => {
+			console.log(text);
+		});
+	}
+
+	// how do we get multiple effects into place?
+	// via a sink.
+	// events go into main and drain out into the 'sink'.
+	const sink = main();
+
+
+	DOMEffect(sink);
+	ConsoleLogEffect(sink);
 
 	export default {};

@@ -1,22 +1,22 @@
-	import Cycle from '@cycle/core';
-	import CycleDOM from '@cycle/dom';
-	import Rx from 'rx';
+import Rx from 'rx';
 
-	// the entry point for the whole application.
-	function main() {
-		// return an Observable to the DOM driver.
-		return {
-			DOM: Rx.Observable.interval(1000)
-				.map(ii => CycleDOM.p(`${ii} seconds elapsed`))
-		};
-	}
+// principle of Cycle.js is to separate logic from effects.
 
-	// an object of driver functions.
-	const drivers = {
-		DOM: CycleDOM.makeDOMDriver('#lesson01')
-	};
+// logic = Observables:
+// made up of events.
+// does not change the external world.
+// (functional) what the developer creates.
 
-	// start app, passing entry poiunt and drivers.
-	Cycle.run(main, drivers);
+// effects = .subscribe 
+// changes the external world / DOM, HTTP request, etc.
+// live in subscribes.
+// (imperitive) to be contained within the Cycle.js framework.
 
-	export default {};
+Rx.Observable.timer(0, 1000)
+	.map(ii => `Seconds elapsed ${ii}`)
+
+.subscribe(text => {
+	document.querySelector('#lesson01').textContent = text;
+});
+
+export default {};
