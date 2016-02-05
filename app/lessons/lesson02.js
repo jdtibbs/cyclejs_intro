@@ -5,6 +5,8 @@
 	// main() function for logic, 
 	// and effects functions for effects.
 
+	document.querySelector('#lesson').textContent = 'Lesson 2 - Main function and effects functions.';
+
 	// logic:
 	function main() {
 		return Rx.Observable.timer(0, 1000)
@@ -17,7 +19,7 @@
 	function DOMEffect(text$) {
 		//  naming convention: $ indicates this is a 'stream'.
 		text$.subscribe(text => {
-			document.querySelector('#lesson02').textContent = text;
+			document.querySelector('#app').textContent = text;
 		});
 	}
 

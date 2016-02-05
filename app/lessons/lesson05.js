@@ -6,7 +6,7 @@
 	// This lesson shows how we can structure these pieces together, and generalize effect handling with "drivers".
 	// Also we can make the 'main' function more generic by introducing a 'drivers' object.
 
-	document.querySelector('#lesson').textContent = 'Lesson 4 - Introducing run() and drivers().';
+	document.querySelector('#lesson').textContent = 'Lesson 5 - Read effects from the DOM: click events.';
 
 	// logic:
 	function main() {
