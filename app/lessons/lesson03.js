@@ -6,6 +6,8 @@
 
 	// Main will now return an object containing 2 different Observables, one for each sink. 
 
+	document.querySelector('#lesson').textContent = 'Lesson 3 - Customizing effects from the main function.';
+
 	// logic:
 	function main() {
 		return {
@@ -19,7 +21,7 @@
 	// effect:
 	function DOMEffect(text$) {
 		text$.subscribe(text => {
-			document.querySelector('#lesson03').textContent = text;
+			document.querySelector('#app').textContent = text;
 		});
 	}
 

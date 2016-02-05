@@ -12,11 +12,13 @@ import Rx from 'rx';
 // live in subscribes.
 // (imperitive) to be contained within the Cycle.js framework.
 
+document.querySelector('#lesson').textContent = 'Lesson 1 - Separating Logic From Effects.';
+
 Rx.Observable.timer(0, 1000)
 	.map(ii => `Seconds elapsed ${ii}`)
 
 .subscribe(text => {
-	document.querySelector('#lesson01').textContent = text;
+	document.querySelector('#app').textContent = text;
 });
 
 export default {};
