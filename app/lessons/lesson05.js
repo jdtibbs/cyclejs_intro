@@ -1,18 +1,25 @@
 	import Rx from 'rx';
 
-	// In the last lesson the last section of code we wrote is neither logic nor effects. 
-	// It is code which ties together logic (main) with effects.
-	// We can encapsulate that in a run() function. 
-	// This lesson shows how we can structure these pieces together, and generalize effect handling with "drivers".
-	// Also we can make the 'main' function more generic by introducing a 'drivers' object.
+	// So far we only had effects that write something to the external world, 
+	// we are not yet reading anything from the external world into our app. 
+	// This lesson shows how we can change the DOM Driver to return a "DOM Source" representing read effects, 
+	// such as click events. We will leverage that to create an interactive application.
+
+	// source: is input (read) effects.
+	// sink: is output (write) effects.
 
 	document.querySelector('#lesson').textContent = 'Lesson 5 - Read effects from the DOM: click events.';
 
 	// logic:
-	function main() {
+	function main(DOMSource) {
+		//  returns sinks.
+		const click$ = DOMSource;
 		return {
-			DOM: Rx.Observable.timer(0, 1000)
-				.map(ii => `Seconds elapsed ${ii}`),
+			DOM: click$
+				.startWith(null)
+				.flatMapLatest(() =>
+					Rx.Observable.timer(0, 1000)
+					.map(ii => `Seconds elapsed ${ii}`)),
 			Log: Rx.Observable.timer(0, 2000)
 				.map(ii => ii * 2)
 		};
@@ -24,6 +31,8 @@
 		text$.subscribe(text => {
 			document.querySelector('#app').textContent = text;
 		});
+		const DOMSource = Rx.Observable.fromEvent(document, 'click');
+		return DOMSource;
 	}
 
 	// another effect:
@@ -35,10 +44,13 @@
 
 	// run is now very generic, we can now add and remove drivers from the 'drivers' object to initiate the effects we wish.
 	function run(main, drivers) {
-		const sinks = main();
-		Object.keys(drivers).forEach(key => {
-			drivers[key](sinks[key]);
-		});
+		const proxyDOMSource = new Rx.Subject();
+		const sinks = main(proxyDOMSource);
+		const DOMSource = drivers.DOM(sinks.DOM);
+		DOMSource.subscribe(click => proxyDOMSource.onNext(click));
+		// Object.keys(drivers).forEach(key => {
+		// drivers[key](sinks[key]);
+		// });
 	}
 
 	const drivers = {
