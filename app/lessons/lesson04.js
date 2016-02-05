@@ -1,9 +1,10 @@
 	import Rx from 'rx';
 
-	// The last lesson the last part of the code we wrote is neither logic nor effects. 
+	// In the last lesson the last section of code we wrote is neither logic nor effects. 
 	// It is code which ties together logic (main) with effects.
 	// We can encapsulate that in a run() function. 
 	// This lesson shows how we can structure these pieces together, and generalize effect handling with "drivers".
+	// Also we can make the 'main' function more generic by introducing a 'drivers' object.
 
 	// logic:
 	function main() {
@@ -16,6 +17,7 @@
 	}
 
 	// effect:
+	// we rename the effects functions to better represent the role they play.
 	function DOMDriver(text$) {
 		text$.subscribe(text => {
 			document.querySelector('#lesson04').textContent = text;
@@ -29,6 +31,7 @@
 		});
 	}
 
+	// run is now very generic, we can now add and remove drivers from the 'drivers' object to initiate the effects we wish.
 	function run(main, drivers) {
 		const sinks = main();
 		Object.keys(drivers).forEach(key => {
@@ -41,7 +44,6 @@
 		Log: ConsoleLogDriver
 	};
 
-	// now run is very generic, we can add and remove drivers from the 'drivers' object.
 	run(main, drivers);
 
 	export default {};
