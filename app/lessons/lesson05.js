@@ -26,7 +26,6 @@
 	}
 
 	// effect:
-	// we rename the effects functions to better represent the role they play.
 	function DOMDriver(text$) {
 		text$.subscribe(text => {
 			document.querySelector('#app').textContent = text;
@@ -42,7 +41,6 @@
 		});
 	}
 
-	// run is now very generic, we can now add and remove drivers from the 'drivers' object to initiate the effects we wish.
 	function run(main, drivers) {
 		const proxyDOMSource = new Rx.Subject();
 		const sinks = main(proxyDOMSource);
