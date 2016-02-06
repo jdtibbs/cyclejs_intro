@@ -13,4 +13,5 @@
 // import lesson from './lessons/makecyclejs/lesson09';
 // import lesson from './lessons/makecyclejs/lesson10';
 
-import lesson from './lessons/cyclejs/lesson11';
+// import lesson from './lessons/cyclejs/lesson11';
+import lesson from './lessons/cyclejs/lesson12';
