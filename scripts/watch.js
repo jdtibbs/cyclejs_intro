@@ -32,7 +32,7 @@ watch.on('change', function(event, filename) {
 				console.log('...build is complete.');
 				// TODO: implement hot module reloading, put an end to browser refresh requirement!!!!
 			});
-		}, 2000);
+		}, 800);
 	}
 });
 
