@@ -2,6 +2,8 @@
 // by importing them here they will be browserify'd into action!
 // just uncomment the 'import' of the lesson you wish to view in action in your browser.
 
+// import lesson from './lessons/template';
+
 // import lesson from './lessons/makecyclejs/lesson01';
 // import lesson from './lessons/makecyclejs/lesson02';
 // import lesson from './lessons/makecyclejs/lesson03';
