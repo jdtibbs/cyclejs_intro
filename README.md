@@ -19,3 +19,5 @@ References:
 [Cycle.js Webpack Babel Boilerplate](https://github.com/Cmdv/cycle-webpack-boilerplate)
 
 [Cycle.js Gitter](https://gitter.im/cyclejs/cycle-core)
+
+[Budo](https://github.com/mattdesl/budo) a Dev server for rapid prototyping
