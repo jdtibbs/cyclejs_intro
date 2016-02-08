@@ -4,10 +4,12 @@
   "description": "An introduction to Cycle.js.",
   "main": "index.js",
   "scripts": {
-    "build": "mkdirp public && browserify app/app.js -t babelify --outfile public/app.js",
-    "watch": "mkdirp public && watchify app/app.js -t babelify --outfile public/app.js -v",
+    "build-public": "mkdirp public",
+    "build-static": "node scripts/build-static",
+    "build-js": "mkdirp public && browserify app/app.js -t babelify --outfile public/app.js",
+    "watch-js": "mkdirp public && watchify app/app.js -t babelify --outfile public/app.js -v",
     "serve": "live-server ./public",
-    "start": "npm-run-all --parallel watch serve"
+    "start": "npm-run-all build-public build-static build-js --parallel watch-js serve"
   },
   "author": "jdtibbs",
   "license": "ISC",
