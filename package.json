@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.js -prod",
     "test": "tape -r babel-register app/**/*test.js",
-    "watch": "budo app/app.js -l -d app -p 8080 -- -t babelify -v"
+    "watch": "budo app/app.js --live -d app -p 8080 -- -t babelify -v"
   },
   "author": "jdtibbs",
   "license": "ISC",
