@@ -2,11 +2,19 @@ var exec = require('child_process').exec;
 var fs = require('fs');
 
 console.log('Do an initial build...');
-exec('node ./scripts/build.js', function(error, stdout, stderr) {
+exec('rollup -c rollup.config.js', function(error, stdout, stderr) {
 	if (error !== null) {
 		console.log(error);
 	}
 });
+
+// copy files to ./public
+fs.createReadStream('./app/app.css')
+	.pipe(fs.createWriteStream('./public/bundle.css'));
+fs.createReadStream('./app/favicon.ico')
+	.pipe(fs.createWriteStream('./public/favicon.ico'));
+fs.createReadStream('./app/index.html')
+	.pipe(fs.createWriteStream('./public/index.html'));
 
 // watch for file changes and execute a build.
 console.log('Start watching files for changes...');
@@ -25,7 +33,7 @@ watch.on('change', function(event, filename) {
 		setTimeout(function() {
 			doBuild = false;
 			console.log('One or more files changed, start a build...');
-			exec('node ./scripts/build.js', function(error, stdout, stderr) {
+			exec('rollup -c rollup.config.js', function(error, stdout, stderr) {
 				if (error !== null) {
 					console.log(error);
 				}
