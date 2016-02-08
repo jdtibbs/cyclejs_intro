@@ -19,3 +19,6 @@ References:
 [Cycle.js Webpack Babel Boilerplate](https://github.com/Cmdv/cycle-webpack-boilerplate)
 
 [Cycle.js Gitter](https://gitter.im/cyclejs/cycle-core)
+
+[cycle-starter-kit](https://github.com/erkarl/cycle-starter-kit) using live re-load
+
