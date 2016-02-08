@@ -1,4 +1,5 @@
 var browserify = require('browserify');
+var exec = require('child_process').exec;
 var fs = require('fs');
 var process = require('process');
 var shell = require('shelljs');
@@ -21,20 +22,27 @@ fs.stat('./public', function(error, stats) {
 	fs.createReadStream('./app/index.html')
 		.pipe(fs.createWriteStream('./public/index.html'));
 
-	var writeable = fs.createWriteStream('./public/bundle.js');
+	exec('rollup -c rollup.config.js', function(error, stdout, stderr) {
+		if (error !== null) {
+			console.log(error);
+		} else {
 
-	// transform to ES5.
-	browserify('./app/app.js')
-		.transform('babelify', {
-			presets: ['es2015']
-		})
-		.bundle()
-		.pipe(writeable);
+			var writeable = fs.createWriteStream('./public/bundle.js');
 
-	// compress the ES5.
-	writeable.on('finish', function() {
-		if (process.argv.length > 2 && process.argv[2] === '-prod') {
-			fs.writeFile('./public/bundle.js', uglify.minify("./public/bundle.js").code);
+			// transform to ES5.
+			browserify('./public/bundle.js')
+				.transform('babelify', {
+					presets: ['es2015']
+				})
+				.bundle()
+				.pipe(writeable);
+
+			// compress the ES5.
+			writeable.on('finish', function() {
+				if (process.argv.length > 2 && process.argv[2] === '-prod') {
+					fs.writeFile('./public/bundle.js', uglify.minify("./public/bundle.js").code);
+				}
+			});
 		}
 	});
 });
