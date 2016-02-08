@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.js -prod",
     "test": "tape -r babel-register app/**/*test.js",
-    "watch": "budo app/app.js   -- -t babelify -o app/bundle.js -v"
+    "watch": "budo app/app.js -l -d app -p 8080 -- -t babelify -v"
   },
   "author": "jdtibbs",
   "license": "ISC",
@@ -23,10 +23,5 @@
     "shelljs": "^0.5.3",
     "tape": "^4.4.0",
     "uglify-js": "^2.6.1"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
   }
 }
