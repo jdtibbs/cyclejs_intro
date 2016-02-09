@@ -1,8 +1,8 @@
 import babel from 'rollup-plugin-babel';
 
 export default {
-	entry: 'app/app.js',
+	entry: 'tmp/es6bundle.js',
 	format: 'cjs',
 	plugins: [babel()],
-	dest: 'public/bundle.js'
+	dest: 'tmp/bundle.js'
 };
