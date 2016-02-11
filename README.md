@@ -2,9 +2,11 @@
 
 Code and notes from the egghead.io [Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals) videos.
 
-Coded using ES2015 and bundled with [Rollup](https://github.com/rollup/rollup).
+ES6 is transpiled with [Babel](https://babeljs.io/) and bundled with [Rollup](https://github.com/rollup/rollup).
 
-Using npm as the build tool.
+Using npm as the build tool,[see](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
+
+TODO try [nodemon](https://github.com/remy/nodemon)
 
 Develop: `npm run watch`, [Open in browser](http://localhost:8080)
 
