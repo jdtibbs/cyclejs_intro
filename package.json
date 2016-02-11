@@ -4,15 +4,16 @@
   "description": "An introduction to Cycle.js.",
   "main": "index.js",
   "scripts": {
-    "build-dir": "mkdirp tmp && mkdirp public",
+    "build-mkdir": "mkdirp tmp && mkdirp public",
     "build-cmjs-to-es6": "rollup -c rollup.cmjs.to.es6.config.js",
     "build-babel": "rollup -c rollup.babel.config.js",
+    "build-babel-dev": "rollup -c rollup.babel.dev.config.js",
     "build-uglify": "rollup -c rollup.uglify.config.js",
-    "build": "node scripts/build.js -prod",
-    "rollup": "rollup -c rollup.config.js",
+    "build-dev": "npm run build-mkdir & npm run build-cmjs-to-es6 & npm run build-babel-dev",
+    "install": "npm run build-mkdir & npm run build-cmjs-to-es6 & npm run build-babel & npm run build-uglify",
+    "server": "http-server ./public",
     "test": "tape -r babel-register app/**/*test.js",
-    "watch": "node scripts/watch.js",
-    "serve": "http-server ./public"
+    "watch": "npm run build-dev & npm run server",
   },
   "author": "jdtibbs",
   "license": "ISC",
@@ -24,22 +25,14 @@
   "devDependencies": {
     "babel": "^6.5.1",
     "babel-preset-es2015-rollup": "^1.1.1",
-    "babelify": "^7.2.0",
-    "browserify": "^13.0.0",
     "http-server": "^0.8.5",
     "mkdirp": "^0.5.1",
     "rollup": "^0.25.3",
     "rollup-plugin-babel": "^2.3.9",
     "rollup-plugin-commonjs": "^2.2.1",
+    "rollup-plugin-json": "^2.0.0",
     "rollup-plugin-node-resolve": "^1.4.0",
     "rollup-plugin-uglify": "^0.2.0",
-    "shelljs": "^0.5.3",
     "tape": "^4.4.0",
-    "uglify-js": "^2.6.1"
-  },
-  "babel": {
-    "presets": [
-      "es2015-rollup"
-    ]
   }
 }

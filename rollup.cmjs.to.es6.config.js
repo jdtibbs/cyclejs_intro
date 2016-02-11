@@ -7,12 +7,13 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 export default {
 	entry: 'app/app.js',
 	dest: 'tmp/es6bundle.js',
-	format: 'es6',
 	plugins: [nodeResolve({
 		jsnext: true,
-		main: true
+		main: true,
+		browser: true
 	}), commonjs({
 		include: 'node_modules/**',
+		exclude: ['app/**, node_modules/@cycle/**'],
 		namedExports: {
 			'node_modules/@cycle/dom/lib/cycle-dom.js': ['button', 'p', 'label', 'div', 'makeDOMDriver']
 		}

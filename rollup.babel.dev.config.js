@@ -7,5 +7,5 @@ export default {
 		"babelrc": false,
 		"presets": ["es2015-rollup"]
 	})],
-	dest: 'tmp/bundle.js'
+	dest: 'public/bundle.js'
 };
