@@ -2,11 +2,15 @@
 
 Code and notes from the egghead.io [Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals) videos.
 
+Coded using ES2015 and bundled with [Rollup](https://github.com/rollup/rollup).
+
+Using npm as the build tool.
+
 Develop: `npm run watch`, [Open in browser](http://localhost:8080)
 
 Test: `npm test`
 
-Build: `npm run build`
+Install/Production: `npm run install`
 
 References: 
 
