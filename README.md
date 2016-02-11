@@ -1,6 +1,6 @@
 # An Introduction to [Cycle.js](http://cycle.js.org/)
 
-Code and notes from the egghead.io [Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals) videos.
+A work in progress Cycle.js playground.
 
 This project started out as a reference and playground for Cycle.js.  In the process of putting this project together I began to experiment with different build tools.  You will find a branch for each. 
 
@@ -13,13 +13,9 @@ This project started out as a reference and playground for Cycle.js.  In the pro
 4. [Rollup](http://rollupjs.org)
 
 
-Develop: `npm run watch`, [Open in browser](http://localhost:8080)
-
-Test: `npm test`
-
-Build: `npm run build`
-
 References: 
+
+[Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals)
 
 [The introduction to reactive programming you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754)
 
