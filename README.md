@@ -2,6 +2,17 @@
 
 Code and notes from the egghead.io [Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals) videos.
 
+This project started out as a reference and playground for Cycle.js.  In the process of putting this project together I began to experiment with different build tools.  You will find a branch for each. 
+
+1. Master, is my crude home grown build 
+
+2. [Budo](https://github.com/mattdesl/budo) 
+
+3. live-reload [live-server](https://github.com/tapio/live-server) 
+
+4. [Rollup](http://rollupjs.org)
+
+
 Develop: `npm run watch`, [Open in browser](http://localhost:8080)
 
 Test: `npm test`
