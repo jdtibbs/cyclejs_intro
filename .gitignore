@@ -3,3 +3,5 @@ node_modules/
 
 # Brunch output folder.
 public/
+
+tmp/
