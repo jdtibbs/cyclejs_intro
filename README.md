@@ -2,11 +2,15 @@
 
 Code and notes from the egghead.io [Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals) videos.
 
-Develop: `npm run watch`, [Open in browser](http://localhost:8080)
+With [Live-server](https://github.com/tapio/live-server)
+
+Develop: `npm start`
 
 Test: `npm test`
 
-Build: `npm run build`
+Build Production: `npm run build-prod`
+
+Build Production and Test Run: `npm run build-prod-test`
 
 References: 
 
