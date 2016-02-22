@@ -15,13 +15,13 @@ fs.stat('./public', function(error, stats) {
 
 	// copy files to ./public
 	fs.createReadStream('./app/app.css')
-		.pipe(fs.createWriteStream('./public/bundle.css'));
+		.pipe(fs.createWriteStream('./public/app.css'));
 	fs.createReadStream('./app/favicon.ico')
 		.pipe(fs.createWriteStream('./public/favicon.ico'));
 	fs.createReadStream('./app/index.html')
 		.pipe(fs.createWriteStream('./public/index.html'));
 
-	var writeable = fs.createWriteStream('./public/bundle.js');
+	var writeable = fs.createWriteStream('./public/app.js');
 
 	// transform to ES5.
 	browserify('./app/app.js')
@@ -33,8 +33,9 @@ fs.stat('./public', function(error, stats) {
 
 	// compress the ES5.
 	writeable.on('finish', function() {
+		console.log(process.argv)
 		if (process.argv.length > 2 && process.argv[2] === '-prod') {
-			fs.writeFile('./public/bundle.js', uglify.minify("./public/bundle.js").code);
+			fs.writeFile('./public/app.js', uglify.minify("./public/app.js").code);
 		}
 	});
 });

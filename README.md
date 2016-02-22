@@ -2,11 +2,15 @@
 
 Code and notes from the egghead.io [Cycle.js Fundamentals](https://egghead.io/series/cycle-js-fundamentals) videos.
 
+With [Budo](https://github.com/mattdesl/budo) a Dev server for rapid prototyping
+
 Develop: `npm run watch`, [Open in browser](http://localhost:8080)
 
 Test: `npm test`
 
-Build: `npm run build`
+Build Production: `npm run build-prod`
+
+Build Production & Start Local Server on Build: `npm run build-prod-test`
 
 References: 
 
@@ -19,5 +23,3 @@ References:
 [Cycle.js Webpack Babel Boilerplate](https://github.com/Cmdv/cycle-webpack-boilerplate)
 
 [Cycle.js Gitter](https://gitter.im/cyclejs/cycle-core)
-
-[Budo](https://github.com/mattdesl/budo) a Dev server for rapid prototyping

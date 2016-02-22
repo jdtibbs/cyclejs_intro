@@ -5,7 +5,7 @@
 	from '@cycle/dom';
 	import Rx from 'rx';
 
-	document.querySelector('#lesson').textContent = 'Lesson 12 - An interactive counter';
+	document.querySelector('#lesson').textContent = 'Lesson 12 - An interactive counter.';
 
 	// source: is input (read) effects.
 	// sink: is output (write) effects.

@@ -4,7 +4,8 @@
   "description": "An introduction to Cycle.js.",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build.js -prod",
+    "build-prod": "node scripts/build.js -prod",
+    "build-prod-test": "npm run build-prod && node scripts/server.js",
     "test": "tape -r babel-register app/**/*test.js",
     "watch": "budo app/app.js --live -d app -p 8080 -- -t babelify -v"
   },
