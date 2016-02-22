@@ -24,5 +24,5 @@ References:
 
 [Cycle.js Gitter](https://gitter.im/cyclejs/cycle-core)
 
-[cycle-starter-kit](https://github.com/erkarl/cycle-starter-kit) using live re-load
+[cycle-starter-kit](https://github.com/erkarl/cycle-starter-kit) using live-server
 
